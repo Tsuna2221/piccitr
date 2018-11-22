@@ -1,7 +1,7 @@
 {
-  "main.css": "/piccitr/static/css/main.ce96b812.chunk.css",
-  "main.js": "/piccitr/static/js/main.71d1b297.chunk.js",
-  "main.js.map": "/piccitr/static/js/main.71d1b297.chunk.js.map",
+  "main.css": "/piccitr/static/css/main.9d6aac99.chunk.css",
+  "main.js": "/piccitr/static/js/main.37ac8bf6.chunk.js",
+  "main.js.map": "/piccitr/static/js/main.37ac8bf6.chunk.js.map",
   "static/js/1.05c28ac9.chunk.js": "/piccitr/static/js/1.05c28ac9.chunk.js",
   "static/js/1.05c28ac9.chunk.js.map": "/piccitr/static/js/1.05c28ac9.chunk.js.map",
   "runtime~main.js": "/piccitr/static/js/runtime~main.86341425.js",
@@ -10,8 +10,8 @@
   "static/media/SettingsButton.svg": "/piccitr/static/media/SettingsButton.15c7ebf3.svg",
   "static/media/CloseButton.svg": "/piccitr/static/media/CloseButton.80979d47.svg",
   "static/media/SubmitSearch.svg": "/piccitr/static/media/SubmitSearch.fe56f6da.svg",
-  "static/css/main.ce96b812.chunk.css.map": "/piccitr/static/css/main.ce96b812.chunk.css.map",
+  "static/css/main.9d6aac99.chunk.css.map": "/piccitr/static/css/main.9d6aac99.chunk.css.map",
   "index.html": "/piccitr/index.html",
-  "precache-manifest.453e02f53538a06920087fc3ac43d7f9.js": "/piccitr/precache-manifest.453e02f53538a06920087fc3ac43d7f9.js",
+  "precache-manifest.ffb6b1d3c45ac6e2b207d8abb4f42307.js": "/piccitr/precache-manifest.ffb6b1d3c45ac6e2b207d8abb4f42307.js",
   "service-worker.js": "/piccitr/service-worker.js"
 }
