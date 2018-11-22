@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: rgba(208,27,70,0.8);
+      }
+
+      .cls-2 {
+        fill: #e6e6e6;
+      }
+    </style>
+  </defs>
+  <g id="Arrow" transform="translate(-960 -200)">
+    <g id="RandomButton" transform="translate(-120 153)">
+      <path id="Path_1" data-name="Path 1" class="cls-1" d="M25,0A25,25,0,1,1,0,25,25,25,0,0,1,25,0Z" transform="translate(1080 47)"/>
+    </g>
+    <g id="Group_22" data-name="Group 22" transform="translate(2 -33)">
+      <path id="iconmonstr-arrow-24" class="cls-2" d="M6.868,16.522,4,13.769,9.565,8.261,4,2.754,6.868,0l8.263,8.261Z" transform="translate(974.493 249.478)"/>
+    </g>
+  </g>
+</svg>
