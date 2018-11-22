@@ -1,7 +1,7 @@
 {
   "main.css": "/piccitr/static/css/main.ce96b812.chunk.css",
-  "main.js": "/piccitr/static/js/main.c0d6bb90.chunk.js",
-  "main.js.map": "/piccitr/static/js/main.c0d6bb90.chunk.js.map",
+  "main.js": "/piccitr/static/js/main.71d1b297.chunk.js",
+  "main.js.map": "/piccitr/static/js/main.71d1b297.chunk.js.map",
   "static/js/1.05c28ac9.chunk.js": "/piccitr/static/js/1.05c28ac9.chunk.js",
   "static/js/1.05c28ac9.chunk.js.map": "/piccitr/static/js/1.05c28ac9.chunk.js.map",
   "runtime~main.js": "/piccitr/static/js/runtime~main.86341425.js",
@@ -12,6 +12,6 @@
   "static/media/SubmitSearch.svg": "/piccitr/static/media/SubmitSearch.fe56f6da.svg",
   "static/css/main.ce96b812.chunk.css.map": "/piccitr/static/css/main.ce96b812.chunk.css.map",
   "index.html": "/piccitr/index.html",
-  "precache-manifest.695e17b485e9b7755e459c6bb0731a31.js": "/piccitr/precache-manifest.695e17b485e9b7755e459c6bb0731a31.js",
+  "precache-manifest.453e02f53538a06920087fc3ac43d7f9.js": "/piccitr/precache-manifest.453e02f53538a06920087fc3ac43d7f9.js",
   "service-worker.js": "/piccitr/service-worker.js"
 }
