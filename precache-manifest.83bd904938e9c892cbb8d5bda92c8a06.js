@@ -20,19 +20,19 @@ self.__precacheManifest = [
     "url": "/piccitr/static/js/runtime~main.86341425.js"
   },
   {
-    "revision": "793f05ee903128ba276f",
-    "url": "/piccitr/static/js/main.793f05ee.chunk.js"
+    "revision": "90f586e4ba341961ccc6",
+    "url": "/piccitr/static/js/main.90f586e4.chunk.js"
   },
   {
     "revision": "05c28ac9ddea0fc494b9",
     "url": "/piccitr/static/js/1.05c28ac9.chunk.js"
   },
   {
-    "revision": "793f05ee903128ba276f",
-    "url": "/piccitr/static/css/main.832df2a8.chunk.css"
+    "revision": "90f586e4ba341961ccc6",
+    "url": "/piccitr/static/css/main.4c5a3b33.chunk.css"
   },
   {
-    "revision": "3ae793265ea1ad734c776dee57d35f9e",
+    "revision": "f4f2bc41480b22a5eff778611baa7d7f",
     "url": "/piccitr/index.html"
   }
 ];
