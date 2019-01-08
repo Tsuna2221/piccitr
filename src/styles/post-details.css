@@ -1,0 +1,96 @@
+.details-container{
+    transition: 0.13s ease;
+    height: 100vh;
+    width: 0px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: #323241ed;
+    overflow-y: scroll;
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+}
+.active{
+    width: 60%;
+}
+
+.closeBtn{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20px;
+    margin: 25px;
+    padding: 7px;
+    cursor: pointer;
+}
+#details{
+    flex-direction: column;
+    display: flex;
+    padding: 25px;
+    width: 90%;
+    margin: auto;
+}
+.ref-links{
+    position: absolute;
+    right: 0;
+    margin: 7px 60px 0 0;
+}
+
+.ref-links > a{
+    font-family: 'Montserrat';
+    color: #D4D4D4;
+    font-size: 12px;
+    text-decoration: none;
+    padding: 5px 13px; 
+    margin-right: 10px;
+    border: 1px solid #56566E;
+    border-radius: 15px;  
+}
+
+.sub-name{
+    color: #F3F3F3;
+    width: max-content;
+}
+
+.sub-name > h1{
+    font-size: 21px;
+    font-weight: 700;
+    margin: 5px 0;
+}
+
+.author-name{
+    color: #E6E6E6;
+    font-size: 17px;
+    font-weight: 500;
+    margin: 7px 0;
+}
+
+.author-name > a{
+    color: #E6E6E6;
+}
+
+.title{
+    color: #DEDEDE;
+    font-size: 15px;
+    margin: 10px 0;
+}
+.stats{
+    color: #E6E6E6;
+    font-family: 'Montserrat';
+    font-size: 15px;
+}
+
+.embedded-cell{
+    margin: 0 auto;
+}
+
+.embedded-cell > img, .embedded-cell > video, .embedded-cell > iframe{
+    max-width: 100%;
+}
+.twitch-embed, .gfycat-embed, .pornhub-embed, .youporn-embed{
+    height: 500px;
+}
+.youtube-embed{
+    max-height: -webkit-fill-available;
+}

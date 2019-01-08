@@ -1,0 +1,155 @@
+#posts-container{
+    width: 80vw;
+    margin: 0 auto;
+}
+.error-message{
+    font-size: 20px;
+    font-weight: 700;
+    color: #C1C1C5;
+    text-align: center;
+    margin-top: 5px;
+}
+.post-cell{
+    margin: 3px;
+    width: 24%;
+    overflow: hidden;
+    cursor: pointer;
+}
+.flag{
+    position: absolute;
+    z-index: 100;
+    padding: 3px 7px;
+    margin: 5px;
+    border-radius: 50px;
+    color: #efefef;
+    font-weight: 600;
+    font-size: 65%;
+    opacity: 1;
+    transition: 0.125s ease;
+}
+
+.nsfw{
+    right: 0;
+}
+
+.image > img{
+    width: 100%;
+}
+.blur{
+    filter: blur(40px)
+}
+
+.switch-btn{
+    position: fixed;
+    display: flex;
+    right: 0;
+    margin: 15px;
+    bottom: 0;
+    width: 50px;
+    height: 26px;
+    background: #ccc;
+    border-radius: 50px;
+    align-items: center;
+    transition: .5s;
+    cursor: pointer;
+    z-index: 20000;
+}
+
+.switch-note{
+    margin-left: -140%;
+    z-index: 1000;
+    background-color: #656565;
+    padding: 5px 10px;
+    border-radius: 50px;
+    opacity: 0;
+    transition: .12s;
+    font-size: small;
+    font-weight: 700;
+    color: #c3c3c3;
+}
+
+.switch-btn:hover > .switch-note{
+    opacity: 1;
+}
+
+.slider{
+    width: 22px;
+    height: 22px;
+    margin: 0 2px 0 3px;
+    border-radius: 50px;
+    background: #fff;
+    transition: .5s;
+    position: absolute;
+    transform: translateX(0%);
+}
+
+.switch-active{
+    background-color: #d01b46;
+}
+
+.slide-active{
+    transform: translateX(100%);
+}
+
+.post-overlay{
+    transition: 0.2s ease;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    opacity: 1;
+    cursor: pointer;
+    transform: translateY(250%);
+}
+.post-cell:hover > .post-overlay{
+    transform: translateY(0);
+}
+.post-cell:hover > .image > .flag{
+    opacity: 0;
+}
+.post-details{
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 5px;
+}
+
+.post-details h1{
+    font-size: 100%;
+    font-weight: 700;
+    color: #FEFEFE;
+    margin: 5px 0;
+}
+.post-details span{
+    font-size: 14px;
+    color: #dadada;
+}
+.post-details h2{
+    font-size: 95%;
+    font-weight: 500;
+    color: #FEFEFE;
+    margin: 7px 0 0 5px;
+}
+
+.arrow{
+    width: 3vw;
+    position: fixed;
+    position: -webkit-sticky; 
+    top: 44.5%;
+    cursor: pointer;
+    margin: 0 15px;
+    opacity: 0.75;
+}
+
+.next-btn{
+    right: 0;
+}
+
+.previous-btn{
+    left: 0;
+    transform: scaleX(-1)
+}  
+
+.invisible{
+    display: none;
+}

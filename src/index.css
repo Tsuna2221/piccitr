@@ -1,0 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Raleway');
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #191923;
+}
+*{font-family: 'Raleway', sans-serif}

@@ -1,0 +1,32 @@
+#SearchBar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#search-cell{
+    display: flex;
+    align-items: center;
+}
+
+.search-input{
+    opacity: 0.67;
+    width: 40vw;
+    height: 7vh;
+    border: 1px rgb(102, 102, 102) ;
+    border-radius: 50px;
+    outline: none;
+    padding-left: 40px;
+    font-size: 20px;
+    color: rgb(126, 126, 126);
+}
+
+#search-cell img{
+    width: 4vw;
+    cursor: pointer;
+}
+
+#search-cell img:nth-child(0n + 2){
+    margin: 0 20px;
+}
