@@ -8,6 +8,7 @@ class Grid extends Component {
         let { selectedPost, isActive } = this.state
         return (
             <Fragment>
+                <div onClick={selectedPost.hide} className={`bg-overlay ${isActive ? 'active' : 'inactive'}`}></div>
                 <Details post={selectedPost} isActive={isActive}></Details>
                 <div className='mar-h-cen' style={{width: '80vw'}}>
                     <Masonry id='posts-container'
@@ -45,7 +46,7 @@ class Grid extends Component {
                 <div className="overlay cw-100 ch-100">
                     <div className="details pad-10 c-white">
                         <p className="w-bold mar-v-6">{subreddit_name_prefixed}</p>
-                        <span className="w-regular s-14">{title}</span>
+                        <span className="w-regular s-14">{title.substr(0, 80)}</span>
                         <p className="w-medium mar-v-6 s-16">{domain}</p>
                     </div>
                 </div>
