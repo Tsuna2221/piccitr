@@ -2,12 +2,16 @@
     animation: grayout 1s ease-in-out infinite;
 }
 
+.bg-grid-overlay{
+    background-color: #ff0055cc;
+}
+
 .grid-item{
     .overlay{
+        @extend .bg-grid-overlay;
         transition: 0.2s ease;
         position: absolute;
         top: 0;
-        background-color: #ff0055cc;
         transform: translateY(101%);
 
         .details{

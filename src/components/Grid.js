@@ -50,7 +50,7 @@ class Grid extends Component {
                         <p className="w-medium mar-v-6 s-16">{domain}</p>
                     </div>
                 </div>
-                <img className="cw-100" src={preview.images[0].source.url} alt=""/>
+                <img className="lazyload cw-100" data-src={preview.images[0].source.url} alt=""/>
              </div>)
             :
             ('')
