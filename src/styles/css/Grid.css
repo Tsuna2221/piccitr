@@ -1,0 +1,23 @@
+.bg-loading {
+  animation: grayout 1s ease-in-out infinite; }
+
+.grid-item .overlay {
+  transition: 0.2s ease;
+  position: absolute;
+  top: 0;
+  background-color: #ff0055cc;
+  transform: translateY(101%); }
+  .grid-item .overlay .details {
+    position: absolute;
+    bottom: 0; }
+
+.grid-item:hover > .overlay {
+  transform: translateY(0%); }
+
+@keyframes grayout {
+  0% {
+    background-color: #cacaca; }
+  50% {
+    background-color: #adadad; }
+  100% {
+    background-color: #cacaca; } }
