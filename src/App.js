@@ -8,7 +8,7 @@ import { getQueryString } from './components/Partials/queryPartials'
 
 class App extends Component {
     render() {
-		let { isLoading, posts, after, before } = this.state
+		let { isLoading, posts } = this.state
 
         window.onscroll = (ev) => {
             if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
@@ -18,7 +18,6 @@ class App extends Component {
 		
         return (
             <div className='App'>
-
 				{
 					isLoading ?
 					(<LoaderOverlay isLoading={isLoading}/> )
@@ -36,11 +35,11 @@ class App extends Component {
 	componentDidMount = () => {
 		var { r, after, before } = getQueryString()
 		var subreddit = r ? r.includes('user/') ? `${r}`: `r/${r}` : "r/all"
-		var after = after ? `&after=${after}&count=100` : ""
-		var before = before ? `&before=${before}` : ""
-		var url = `https://www.reddit.com/${subreddit}.json?raw_json=1&limit=100${after}${before}`
+		var a = after ? `&after=${after}&count=100` : ""
+		var b = before ? `&before=${before}` : ""
+		var url = `https://www.reddit.com/${subreddit}.json?raw_json=1&limit=100${a}${b}`
 
-		Axios.get(url).then(({data:{data:{ after, before, children, dist }}}) => this.setState({posts: children, after, before, total: dist, isLoading: false}))
+		Axios.get(url).then(({data:{data:{ after, before, children }}}) => this.setState({posts: children, after, before, isLoading: false}))
 	}
 
 	
@@ -50,7 +49,7 @@ class App extends Component {
 		var { after } = this.state
 		var url = `https://www.reddit.com/${subreddit}.json?raw_json=1&limit=100&count=100&after=${after}`
 
-		Axios.get(url).then(({data:{data:{ after, before, children, dist }}}) => this.setState({posts: [...this.state.posts, ...children], after }))
+		Axios.get(url).then(({data:{data:{ after, children }}}) => this.setState({posts: [...this.state.posts, ...children], after }))
     }
 }
 

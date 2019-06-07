@@ -1,19 +1,19 @@
 import React from 'react';
 
 const embedData = ({domain, url, media, preview}) => {
-    let iframe = (src) => <div className="cw-100"><iframe src={src} frameborder='0' scrolling='no' width='100%' height='500px' allowfullscreen></iframe></div>
+    let iframe = (src) => <div className="cw-100"><iframe title={domain} src={src} frameborder='0' scrolling='no' width='100%' height='500px' allowfullscreen></iframe></div>
 
     switch (domain) {
         case 'gfycat.com':
-            var string = url.split('/').slice(-1)[0]
-            return iframe('https://gfycat.com/ifr/' + string)
+            var gfyString = url.split('/').slice(-1)[0]
+            return iframe('https://gfycat.com/ifr/' + gfyString)
     
         case 'v.redd.it':
             return <video controls autoPlay loop src={url + "/DASH_360?source=fallback"} style={{width: '100%', height: '100%', maxHeight: '500px'}}></video> 
 
         case 'clips.twitch.tv':
-            var string = url.split('/').slice(-1)[0]
-            return iframe('https://clips.twitch.tv/embed?clip=' + string)
+            var twitchString = url.split('/').slice(-1)[0]
+            return iframe('https://clips.twitch.tv/embed?clip=' + twitchString)
 
         case 'youtu.be':
         case 'youtube.com':
@@ -22,8 +22,18 @@ const embedData = ({domain, url, media, preview}) => {
         case 'streamable.com':
             return iframe('https://streamable.com/s/' + url.split('/').slice(-1)[0])
 
-        case 'i.redd.it':
         case 'i.imgur.com':
+            if(url.includes('.gif')){
+                return <div className="cw-100"><img src={url.replace('.gifv', '.gif')} alt="" width='100%'/></div>
+            }
+            return <div className="cw-100"><img src={preview.images[0].source.url} alt="" width='100%'/></div>
+
+        case 'i.redd.it':
+            if(url.includes('.gif')){
+                return <div className="cw-100"><img src={url} alt="" width='100%'/></div>
+            }
+            return <div className="cw-100"><img src={preview.images[0].source.url} alt="" width='100%'/></div>
+
         case 'imgur.com':
             return <div className="cw-100"><img src={preview.images[0].source.url} alt="" width='100%'/></div>
         

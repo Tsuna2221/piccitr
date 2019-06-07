@@ -14,11 +14,11 @@ const Details = ({post, isActive}) => {
                     <a className="c-white s-21 w-bold mar-v-4" target="_blank" rel="noopener noreferrer" href={'https://www.reddit.com/r/' + subreddit}>r/{subreddit}</a>
                     <div className="mar-l-40">
                         <a className="button" target="_blank" rel="noopener noreferrer" href={'https://www.reddit.com' + permalink}>Visit Post</a>
-                        <a className="button" href={'/piccitr?r=' + subreddit}>View on Piccitr</a>
+                        <a className="button" href={'./?r=' + subreddit}>View on Piccitr</a>
                         <a className="button" target="_blank" rel="noopener noreferrer" href={url}>Visit Link</a>
                     </div>
                 </div>
-                <p className="s-16 w-medium mar-v-6">by: <a className="c-white" target="_blank" rel="noopener noreferrer" href={'https://www.reddit.com/u/' + author}>u/{author}</a> - from {domain}</p>
+                <p className="s-16 w-medium mar-v-6">by: <a className="c-white" target="_blank" rel="noopener noreferrer" href={'https://www.reddit.com/u/' + author}>u/{author}</a> - from {domain} - <a className="c-white" href={"./?r=user/" + author}>at piccit</a></p>
                 <p className="s-14 mar-v-10">{title}</p>
                 {embedData(post.post)}
                 <span className="stats">Upvotes ({ups}) - Comments ({num_comments})</span>
