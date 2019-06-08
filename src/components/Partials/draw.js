@@ -1,7 +1,7 @@
 import React from 'react';
 
 const embedData = ({domain, url, media, preview}) => {
-    let iframe = (src) => <div className="cw-100"><iframe title={domain} src={src} frameborder='0' scrolling='no' width='100%' height='500px' allowfullscreen></iframe></div>
+    let iframe = (src) => <div className="cw-100"><iframe title={domain} src={src} frameBorder='0' scrolling='no' width='100%' height='500px' allowFullScreen></iframe></div>
 
     switch (domain) {
         case 'gfycat.com':
@@ -45,6 +45,9 @@ const embedData = ({domain, url, media, preview}) => {
 
         default:
             if(preview){
+                if(url.includes('.gif')){
+                    return <div className="cw-100"><img src={url} alt="" width='100%'/></div>
+                }
                 return <div className="cw-100"><img src={preview.images[0].source.url} alt="" width='100%'/></div>
             }
             break;

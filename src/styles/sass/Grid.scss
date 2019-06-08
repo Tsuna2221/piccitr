@@ -7,21 +7,27 @@
 }
 
 .grid-item{
+    overflow: hidden;
     .overlay{
         @extend .bg-grid-overlay;
         transition: 0.2s ease;
         position: absolute;
         top: 0;
         transform: translateY(101%);
+        z-index: 2;
 
         .details{
             position: absolute;
             bottom: 0;
+            opacity: 0;
         }
     }
 
     &:hover > .overlay{
         transform: translateY(0%);
+        .details{
+            opacity: 1;
+        }
     }
 }
 
@@ -35,4 +41,8 @@
     100%{
         background-color: rgb(202, 202, 202);
     }
+}
+
+.blurried{
+    filter: blur(40px)
 }
