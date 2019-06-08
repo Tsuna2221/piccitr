@@ -9,10 +9,11 @@ import { getQueryString } from './components/Partials/queryPartials'
 
 class App extends Component {
     render() {
-		let { isLoading, posts, NSFWEnable } = this.state
+		let { isLoading, posts, NSFWEnable, isRefetching } = this.state
 
         window.onscroll = (ev) => {
             if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+				this.setState({isRefetching: true})
 				this.refetch()
             }
 		};
@@ -26,6 +27,14 @@ class App extends Component {
 					(<Fragment>
 						<NSFWButton NSFWEnable={NSFWEnable} setFilter={this.setFilter}/>
 						<Grid NSFWEnable={NSFWEnable} posts={posts}></Grid>
+						{
+							isRefetching ?
+							<div className="d-flex a-horizontal mar-v-14">
+								<div className="mini-spinner"></div>
+							</div>
+							:
+							<div></div>
+						}
 					</Fragment> )
 				}
             </div>
@@ -64,7 +73,7 @@ class App extends Component {
 		var { after } = this.state
 		var url = `https://www.reddit.com/${subreddit}.json?raw_json=1&limit=100&count=100&after=${after}`
 
-		Axios.get(url).then(({data:{data:{ after, children }}}) => this.setState({posts: [...this.state.posts, ...children], after }))
+		Axios.get(url).then(({data:{data:{ after, children }}}) => this.setState({posts: [...this.state.posts, ...children], after, isRefetching: true }))
     }
 }
 
