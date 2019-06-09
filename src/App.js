@@ -48,11 +48,12 @@ class App extends Component {
 	}
 
 	componentDidMount = () => {
-		var { r, after, before } = getQueryString()
-		var subreddit = r ? r.includes('user/') ? `${r}`: `r/${r}` : "r/all"
-		var a = after ? `&after=${after}&count=100` : ""
-		var b = before ? `&before=${before}` : ""
-		var url = `https://www.reddit.com/${subreddit}.json?raw_json=1&limit=100${a}${b}`
+		let isMobile = (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+		let { r, after, before } = getQueryString()
+		let subreddit = r ? r.includes('user/') ? `${r}`: `r/${r}` : "r/all"
+		let a = after ? `&after=${after}&count=${isMobile ? '30' : '100'}` : ""
+		let b = before ? `&before=${before}` : ""
+		let url = `https://www.reddit.com/${subreddit}.json?raw_json=1&limit=${isMobile ? '30' : '100'}${a}${b}`
 
 		if(localStorage.getItem('NSFWEnable') === 'false' || !localStorage.getItem('NSFWEnable')){
             this.setState({NSFWEnable: false})
@@ -70,10 +71,11 @@ class App extends Component {
     }
 	
     refetch = () => {
-		var { r } = getQueryString()
-		var subreddit = r ? r.includes('user/') ? `${r}`: `r/${r}` : "r/all"
-		var { after } = this.state
-		var url = `https://www.reddit.com/${subreddit}.json?raw_json=1&limit=100&count=100&after=${after}`
+		let isMobile = (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+		let { r } = getQueryString()
+		let subreddit = r ? r.includes('user/') ? `${r}`: `r/${r}` : "r/all"
+		let { after } = this.state
+		let url = `https://www.reddit.com/${subreddit}.json?raw_json=1&limit=${isMobile ? '30' : '100'}&count=${isMobile ? '30' : '100'}&after=${after}`
 
 		Axios.get(url).then(({data:{data:{ after, children }}}) => this.setState({posts: [...this.state.posts, ...children], after, isRefetching: false }))
     }
