@@ -6,7 +6,10 @@ import Details from './Details'
 class Grid extends Component {
     render() {
         let { selectedPost, isActive } = this.state
-        window.onresize = (e) => this.setState({...this.state, width: (e.currentTarget.innerWidth * 80 / 100) * 24 / 100})
+        window.onresize = (e) => {
+            let numOfColumns = Math.floor(((window.innerWidth * 80 / 100)) / 200)
+            this.setState({...this.state, column: ((100 / numOfColumns) - 1), width: (e.currentTarget.innerWidth * 80 / 100) * ((100 / numOfColumns) - 1) / 100})
+        }
 
         return (
             <Fragment>
@@ -31,12 +34,13 @@ class Grid extends Component {
         },
         selectedPost: {post:{}},
         isActive: false,
-        width: (window.innerWidth * 80 / 100) * 24 / 100
+        width: (window.innerWidth * 80 / 100) * ((100 / Math.floor(((window.innerWidth * 80 / 100)) / 200)) - 1) / 100,
+        column: ((100 / Math.floor(((window.innerWidth * 80 / 100)) / 200)) - 1)
     }
 
     drawPosts = () => {
         let posts = this.props.posts
-        let { width } = this.state 
+        let { width, column } = this.state 
         let { NSFWEnable } = this.props
 
         let discount = (number, percentage) => number - (number * percentage / 100)
@@ -49,7 +53,7 @@ class Grid extends Component {
                 let resVariant = preview.images[0].resolutions[1] ? preview.images[0].resolutions[1].url : preview.images[0].source.url
 
                 return (<div 
-                    style={{width: "24%", height: discount(preview.images[0].source.height, increase(width, preview.images[0].source.width))}} 
+                    style={{width: column + "%", height: discount(preview.images[0].source.height, increase(width, preview.images[0].source.width))}} 
                     key={name}
                     className="grid-item mar-2 bg-loading clickable overflow-y-hide"
                     onClick={() => this.displayDetails(data)}>
