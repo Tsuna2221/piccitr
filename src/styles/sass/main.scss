@@ -97,11 +97,6 @@ body{
         border-bottom: 3px solid #ff0055;
         animation: rotate 0.7s linear infinite;
     }
-
-    @keyframes rotate {
-        from{transform: rotate(0deg)};
-        to{transform: rotate(360deg)}
-    }
 }
 
 .mini-spinner{
@@ -110,11 +105,11 @@ body{
     border-radius: 100px;
     border-bottom: 3px solid #ff0055;
     animation: rotate 0.7s linear infinite;
+}
 
-    @keyframes rotate {
-        from{transform: rotate(0deg)};
-        to{transform: rotate(360deg)}
-    }
+@keyframes rotate {
+    from{transform: rotate(0deg)};
+    to{transform: rotate(360deg)}
 }
 
 .NSFWButton{

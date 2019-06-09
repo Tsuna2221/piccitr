@@ -13,8 +13,10 @@ class App extends Component {
 
         window.onscroll = (ev) => {
             if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-				this.setState({isRefetching: true})
-				this.refetch()
+				if(!isRefetching){
+					this.setState({isRefetching: true})
+					this.refetch()
+				}
             }
 		};
 		
@@ -73,7 +75,7 @@ class App extends Component {
 		var { after } = this.state
 		var url = `https://www.reddit.com/${subreddit}.json?raw_json=1&limit=100&count=100&after=${after}`
 
-		Axios.get(url).then(({data:{data:{ after, children }}}) => this.setState({posts: [...this.state.posts, ...children], after, isRefetching: true }))
+		Axios.get(url).then(({data:{data:{ after, children }}}) => this.setState({posts: [...this.state.posts, ...children], after, isRefetching: false }))
     }
 }
 
