@@ -3,7 +3,7 @@
 }
 
 .details-overlay{
-    transition: 0.5s ease;
+    transition: 0.3s ease;
     transform: translateX(-100%);
     &.active{
         transform: translateX(0%);

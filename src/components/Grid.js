@@ -44,23 +44,25 @@ class Grid extends Component {
 
         return posts.map(({data}) => {
             let { preview, title, domain, subreddit_name_prefixed, over_18, name } = data
-            return preview ?
-            (<div 
-                style={{width: "24%", height: discount(preview.images[0].source.height, increase(width, preview.images[0].source.width))}} 
-                key={name}
-                className="grid-item mar-2 bg-loading clickable overflow-y-hide"
-                onClick={() => this.displayDetails(data)}>
-                <div className="overlay cw-100 ch-100">
-                    <div className="details pad-10 c-white">
-                        <p className="w-bold mar-v-6 rs-medium">{subreddit_name_prefixed}</p>
-                        <p className="w-regular rs-low">{title.substr(0, 80)}</p>
-                        <p className="w-medium mar-v-6 rs-medium">{domain}</p>
+
+            if(preview){
+                let resVariant = preview.images[0].resolutions[1] ? preview.images[0].resolutions[1].url : preview.images[0].source.url
+
+                return (<div 
+                    style={{width: "24%", height: discount(preview.images[0].source.height, increase(width, preview.images[0].source.width))}} 
+                    key={name}
+                    className="grid-item mar-2 bg-loading clickable overflow-y-hide"
+                    onClick={() => this.displayDetails(data)}>
+                    <div className="overlay cw-100 ch-100">
+                        <div className="details pad-10 c-white">
+                            <p className="w-bold mar-v-6 rs-medium">{subreddit_name_prefixed}</p>
+                            <p className="w-regular rs-low">{title.substr(0, 80)}</p>
+                            <p className="w-medium mar-v-6 rs-medium">{domain}</p>
+                        </div>
                     </div>
-                </div>
-                <img className={`lazyload cw-100 ${!NSFWEnable && over_18 ? 'blurried' : ''}`} data-src={preview.images[0].source.url} alt=""/>
-             </div>)
-            :
-            ('')
+                    <img className={`lazyload cw-100 ${!NSFWEnable && over_18 ? 'blurried' : ''}`} data-src={resVariant} alt=""/>
+                 </div>)
+            }
         })
     }
 
@@ -68,7 +70,7 @@ class Grid extends Component {
         ...this.state,
         selectedPost: {
             post,
-            hide: () => this.setState({...this.state, isActive: false})
+            hide: () => this.setState({...this.state, selectedPost: {post:{}}, isActive: false})
         },
         isActive: true
     })

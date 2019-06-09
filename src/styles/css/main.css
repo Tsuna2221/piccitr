@@ -49,13 +49,6 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #5a5a5a; }
 
-.btn-float-right {
-  top: 50%;
-  right: 0; }
-
-.btn-float-left {
-  top: 50%; }
-
 .LoaderOverlay {
   transition: 0.7s;
   display: flex;
