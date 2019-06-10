@@ -24,9 +24,14 @@ const embedData = ({domain, url, media, preview}) => {
 
         case 'i.imgur.com':
             if(url.includes('.gif')){
-                return <div className="cw-100"><img src={url.replace('.gifv', '.gif')} alt="" width='100%'/></div>
+                if(url.includes('.gifv')){
+                    return <video controls autoPlay loop src={url.replace('.gifv', '.mp4')} style={{width: '100%', height: '100%', maxHeight: '500px'}}></video> 
+                }else{
+                    return <div className="cw-100"><img src={url} alt="" width='100%'/></div>
+                }
+            }else{
+                return <div className="cw-100"><img src={preview.images[0].source.url} alt="" width='100%'/></div>
             }
-            return <div className="cw-100"><img src={preview.images[0].source.url} alt="" width='100%'/></div>
 
         case 'i.redd.it':
             if(url.includes('.gif')){

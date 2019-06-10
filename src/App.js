@@ -51,9 +51,9 @@ class App extends Component {
 		let isMobile = (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
 		let { r, after, before } = getQueryString()
 		let subreddit = r ? r.includes('user/') ? `${r}`: `r/${r}` : "r/all"
-		let a = after ? `&after=${after}&count=${isMobile ? '30' : '100'}` : ""
+		let a = after ? `&after=${after}&count=${isMobile ? '50' : '100'}` : ""
 		let b = before ? `&before=${before}` : ""
-		let url = `https://www.reddit.com/${subreddit}.json?raw_json=1&limit=${isMobile ? '30' : '100'}${a}${b}`
+		let url = `https://www.reddit.com/${subreddit}.json?raw_json=1&limit=${isMobile ? '50' : '100'}${a}${b}`
 
 		if(localStorage.getItem('NSFWEnable') === 'false' || !localStorage.getItem('NSFWEnable')){
             this.setState({NSFWEnable: false})
@@ -75,7 +75,7 @@ class App extends Component {
 		let { r } = getQueryString()
 		let subreddit = r ? r.includes('user/') ? `${r}`: `r/${r}` : "r/all"
 		let { after } = this.state
-		let url = `https://www.reddit.com/${subreddit}.json?raw_json=1&limit=${isMobile ? '30' : '100'}&count=${isMobile ? '30' : '100'}&after=${after}`
+		let url = `https://www.reddit.com/${subreddit}.json?raw_json=1&limit=${isMobile ? '50' : '100'}&count=${isMobile ? '50' : '100'}&after=${after}`
 
 		Axios.get(url).then(({data:{data:{ after, children }}}) => this.setState({posts: [...this.state.posts, ...children], after, isRefetching: false }))
     }

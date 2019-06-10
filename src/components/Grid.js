@@ -67,6 +67,7 @@ class Grid extends Component {
                     <img className={`lazyload cw-100 ${!NSFWEnable && over_18 ? 'blurried' : ''}`} data-src={resVariant} alt=""/>
                  </div>)
             }
+            return '';
         })
     }
 
