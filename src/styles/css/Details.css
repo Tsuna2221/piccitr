@@ -1,10 +1,10 @@
 .bg-details {
   background-color: #323241ed; }
 
-.details-overlay {
+.details-overlay, .mobile-overlay {
   transition: 0.3s ease;
   transform: translateX(-100%); }
-  .details-overlay.active {
+  .details-overlay.active, .active.mobile-overlay {
     transform: translateX(0%); }
 
 .button {
@@ -21,4 +21,18 @@
   position: absolute;
   top: 0;
   right: 35px;
-  font-size: 60px; }
+  font-size: 60px;
+  z-index: 30; }
+
+.mobile-overlay {
+  padding: 0px !important;
+  width: 100%;
+  z-index: 400;
+  background-color: #000; }
+  .mobile-overlay::-webkit-scrollbar {
+    display: none; }
+  .mobile-overlay .close {
+    font-size: 40px; }
+  .mobile-overlay .iframe {
+    position: absolute;
+    bottom: 0; }

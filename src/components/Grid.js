@@ -48,7 +48,6 @@ class Grid extends Component {
 
         return posts.map(({data}) => {
             let { preview, title, domain, subreddit_name_prefixed, over_18, name } = data
-
             if(preview){
                 let resVariant = preview.images[0].resolutions[1] ? preview.images[0].resolutions[1].url : preview.images[0].source.url
 

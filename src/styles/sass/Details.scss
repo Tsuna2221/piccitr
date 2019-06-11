@@ -26,4 +26,28 @@
     top: 0;
     right: 35px;
     font-size: 60px;
+    z-index: 30;
+}
+
+//Res
+
+.mobile-overlay{
+    @extend .details-overlay;
+    padding: 0px !important;
+    width: 100%;
+    z-index: 400;
+    background-color: #000;
+    
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    .close{
+        font-size: 40px;
+    }
+
+    .iframe{
+        position: absolute;
+        bottom: 0;
+    }
 }

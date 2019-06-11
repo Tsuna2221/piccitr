@@ -1,6 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import Axios from 'axios';
 
+//Partial
+import { isMobile } from './components/Partials/varCheck'
+
 //Components
 import Grid from './components/Grid'
 import LoaderOverlay from './components/LoaderOverlay'
@@ -48,7 +51,6 @@ class App extends Component {
 	}
 
 	componentDidMount = () => {
-		let isMobile = (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
 		let { r, after, before } = getQueryString()
 		let subreddit = r ? r.includes('user/') ? `${r}`: `r/${r}` : "r/all"
 		let a = after ? `&after=${after}&count=${isMobile ? '50' : '100'}` : ""
@@ -71,7 +73,6 @@ class App extends Component {
     }
 	
     refetch = () => {
-		let isMobile = (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
 		let { r } = getQueryString()
 		let subreddit = r ? r.includes('user/') ? `${r}`: `r/${r}` : "r/all"
 		let { after } = this.state
