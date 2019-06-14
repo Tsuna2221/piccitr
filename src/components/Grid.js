@@ -48,7 +48,7 @@ class Grid extends Component {
         let increase = (n, o) => ((o - n) * 100) / o
 
         return posts.map(({data}) => {
-            let { preview, title, domain, subreddit_name_prefixed, over_18, name } = data
+            let { preview, title, domain, subreddit_name_prefixed, over_18, name, ups, num_comments } = data
             if(preview){
                 let resVariant = preview.images[0].resolutions[1] ? preview.images[0].resolutions[1].url : preview.images[0].source.url
 
@@ -58,6 +58,10 @@ class Grid extends Component {
                     className={`grid-item mar-2 bg-loading clickable overflow-y-hide ${isMobile ? 'mobile' : 'desktop'}`}
                     onClick={isMobile ? null : () => this.displayDetails(data)}>
                     <div onClick={isMobile ? this.toggleMobileOverlay : null} data-overlayid={name} className="overlay cw-100 ch-100">
+                        <div className="details-stats d-flex c-white no-events pos-absolute">
+                            <span className="stat-icon mdi mdi-arrow-up-bold mar-r-10"><span className="mar-l-4">{ups}</span></span>
+                            <span className="stat-icon mdi mdi-comment"><span className="mar-l-4">{num_comments}</span></span>
+                        </div>
                         <div className="details pad-10 c-white no-events">
                             <p className="sub w-bold mar-v-6 rs-medium">{subreddit_name_prefixed}</p>
                             <p className="title w-regular rs-low">{title.substr(0, 80)}</p>

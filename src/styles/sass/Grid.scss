@@ -17,6 +17,19 @@
         transform: translateY(101%);
         z-index: 2;
 
+        .details-stats{
+            top: 8px;
+            right: 15px;
+            
+            .stat-icon{
+                font-size: 125%;
+
+                span{
+                    font-size: 75%;
+                }
+            }
+        }
+
         .details{
             position: absolute;
             bottom: 0;

@@ -12,6 +12,13 @@
     top: 0;
     transform: translateY(101%);
     z-index: 2; }
+    .grid-item .overlay .details-stats {
+      top: 8px;
+      right: 15px; }
+      .grid-item .overlay .details-stats .stat-icon {
+        font-size: 125%; }
+        .grid-item .overlay .details-stats .stat-icon span {
+          font-size: 75%; }
     .grid-item .overlay .details {
       position: absolute;
       bottom: 0;
