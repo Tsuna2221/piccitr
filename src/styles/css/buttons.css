@@ -1,0 +1,40 @@
+.NSFWButton {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  transition: 0.4s ease;
+  width: 50px;
+  height: 24px;
+  background-color: #c4c4c4;
+  padding: 3px;
+  z-index: 300; }
+  .NSFWButton.hide {
+    opacity: 0;
+    pointer-events: none; }
+  .NSFWButton.inactive {
+    background-color: #ff0055; }
+    .NSFWButton.inactive .handler {
+      transform: translateX(100%); }
+  .NSFWButton .handler {
+    transition: 0.4s ease;
+    background-color: #fff;
+    width: 50%;
+    height: 100%;
+    border-radius: 50px;
+    transform: translateX(0%); }
+
+.search-container {
+  bottom: 15px; }
+  .search-container .SearchButton {
+    background-color: #ff0055; }
+  .search-container form input {
+    transition: 0.3s ease;
+    width: 230px;
+    height: 100%;
+    border: none;
+    padding: 0 22px; }
+    .search-container form input::placeholder {
+      font-size: 12px; }
+    .search-container form input.inactive {
+      width: 0px;
+      padding: 0; }

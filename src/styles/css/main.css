@@ -84,24 +84,8 @@ body {
   to {
     transform: rotate(360deg); } }
 
-.NSFWButton {
-  position: fixed;
-  bottom: 15px;
-  right: 15px;
-  transition: 0.4s ease;
-  width: 50px;
-  height: 24px;
-  background-color: #c4c4c4;
-  padding: 3px;
-  z-index: 300; }
-  .NSFWButton.inactive {
-    background-color: #ff0055; }
-    .NSFWButton.inactive .handler {
-      transform: translateX(100%); }
-  .NSFWButton .handler {
-    transition: 0.4s ease;
-    background-color: #fff;
-    width: 50%;
-    height: 100%;
-    border-radius: 50px;
-    transform: translateX(0%); }
+.cw-fit {
+  width: fit-content; }
+
+.ch-fit {
+  height: fit-content; }

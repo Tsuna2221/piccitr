@@ -1,15 +1,25 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Piccitr",
+  "name": "Piccitr",
   "icons": [
     {
       "src": "favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
+    },
+    {
+      "src": "/img/452.png",
+      "type": "image/png",
+      "sizes": "32x32 64x64 128x128 256x256 512x512"
+    },
+    {
+      "src": "/img/904.png",
+      "type": "image/png",
+      "sizes": "1024x1024"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#ff0055",
+  "background_color": "#ff5890"
 }

@@ -8,6 +8,7 @@ import { isMobile } from './components/Partials/varCheck'
 import Grid from './components/Grid'
 import LoaderOverlay from './components/LoaderOverlay'
 import NSFWButton from './components/NSFWButton'
+import SearchButton from './components/SearchButton'
 import { getQueryString } from './components/Partials/queryPartials'
 
 class App extends Component {
@@ -30,6 +31,7 @@ class App extends Component {
 					(<LoaderOverlay isLoading={isLoading}/> )
 					:
 					(<Fragment>
+						<SearchButton NSFWEnable={NSFWEnable}/>
 						<NSFWButton NSFWEnable={NSFWEnable} setFilter={this.setFilter}/>
 						<Grid NSFWEnable={NSFWEnable} posts={posts}></Grid>
 						{
