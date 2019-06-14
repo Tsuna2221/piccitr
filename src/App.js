@@ -16,7 +16,7 @@ class App extends Component {
 		let { isLoading, posts, NSFWEnable, isRefetching } = this.state
 
         window.onscroll = (ev) => {
-            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 150) {
 				if(!isRefetching){
 					this.setState({isRefetching: true})
 					this.refetch()
