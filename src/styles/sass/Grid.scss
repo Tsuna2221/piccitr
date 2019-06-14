@@ -8,6 +8,7 @@
 
 .grid-item{
     overflow: hidden;
+    
     .overlay{
         @extend .bg-grid-overlay;
         transition: 0.2s ease;
@@ -23,10 +24,26 @@
         }
     }
 
-    &:hover > .overlay{
-        transform: translateY(0%);
+    &.desktop{
+        &:hover > .overlay{
+            transform: translateY(0%);
+            .details{
+                opacity: 1;
+            }
+        }
+    } 
+
+    &.mobile{
         .details{
-            opacity: 1;
+            .sub{font-size: 100%;}
+            .title{font-size: 85%;}
+            .domain{font-size: 100%;}
+        }
+        .active{
+            transform: translateY(0%);
+            .details{
+                opacity: 1;
+            }
         }
     }
 }

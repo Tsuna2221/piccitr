@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import Masonry from 'react-masonry-component';
 
 import Details from './Details'
+import { isMobile } from './Partials/varCheck';
 
 class Grid extends Component {
     render() {
@@ -54,16 +55,19 @@ class Grid extends Component {
                 return (<div 
                     style={{width: column + "%", height: discount(preview.images[0].source.height, increase(width, preview.images[0].source.width))}} 
                     key={name}
-                    className="grid-item mar-2 bg-loading clickable overflow-y-hide"
-                    onClick={() => this.displayDetails(data)}>
-                    <div className="overlay cw-100 ch-100">
-                        <div className="details pad-10 c-white">
-                            <p className="w-bold mar-v-6 rs-medium">{subreddit_name_prefixed}</p>
-                            <p className="w-regular rs-low">{title.substr(0, 80)}</p>
-                            <p className="w-medium mar-v-6 rs-medium">{domain}</p>
+                    className={`grid-item mar-2 bg-loading clickable overflow-y-hide ${isMobile ? 'mobile' : 'desktop'}`}
+                    onClick={isMobile ? null : () => this.displayDetails(data)}>
+                    <div onClick={isMobile ? this.toggleMobileOverlay : null} data-overlayid={name} className="overlay cw-100 ch-100">
+                        <div className="details pad-10 c-white no-events">
+                            <p className="sub w-bold mar-v-6 rs-medium">{subreddit_name_prefixed}</p>
+                            <p className="title w-regular rs-low">{title.substr(0, 80)}</p>
+                            <p className="domain w-medium mar-v-6 rs-medium">{domain}</p>
                         </div>
                     </div>
-                    <img className={`lazyload cw-100 ${!NSFWEnable && over_18 ? 'blurried' : ''}`} data-src={resVariant} alt=""/>
+                    {
+                        isMobile ? <span onClick={() => this.displayDetails(data)} className="DetailsButton mdi mdi-eye c-white pos-absolute pad-8 br-circle"></span> : ""
+                    }
+                    <img data-id={name} onClick={isMobile ? this.toggleMobileOverlay : null} className={`lazyload cw-100 ${!NSFWEnable && over_18 ? 'blurried' : ''}`} data-src={resVariant} alt=""/>
                  </div>)
             }
             return '';
@@ -74,10 +78,15 @@ class Grid extends Component {
         ...this.state,
         selectedPost: {
             post,
-            hide: () => this.setState({...this.state, selectedPost: {post:{}}, isActive: false})
+            hide: () => this.setState({...this.state, selectedPost: {post: {}}, isActive: false})
         },
         isActive: true
     })
+
+    toggleMobileOverlay = ({target: { dataset: {overlayid, id} }}) => {
+        let el = s => document.querySelector(`[data-overlayid=${s}]`).classList.toggle('active')
+        overlayid ? el(overlayid) : el(id)
+    }
 }
 
 export default Grid;
