@@ -63,13 +63,13 @@ class Grid extends Component {
                             <span className="stat-icon mdi mdi-comment"><span className="mar-l-4">{num_comments}</span></span>
                         </div>
                         <div className="details pad-10 c-white no-events">
-                            <p className="sub w-bold mar-v-6 rs-medium">{subreddit_name_prefixed}</p>
-                            <p className="title w-regular rs-low">{title.substr(0, 80)}</p>
-                            <p className="domain w-medium mar-v-6 rs-medium">{domain}</p>
+                            <p className="sub w-bold mar-v-6">{subreddit_name_prefixed}</p>
+                            <p className="title w-regular">{title.substr(0, 65)}</p>
+                            <p className="domain w-medium mar-v-6">{domain}</p>
                         </div>
                     </div>
                     {
-                        isMobile ? <span onClick={() => this.displayDetails(data)} className="DetailsButton mdi mdi-eye c-white pos-absolute pad-8 br-circle"></span> : ""
+                        isMobile ? <span onClick={() => this.displayDetails(data)} className="DetailsButton mdi mdi-eye c-white pos-absolute pad-10 s-20 br-circle"></span> : ""
                     }
                     <img data-id={name} onClick={isMobile ? this.toggleMobileOverlay : null} className={`lazyload cw-100 ${!NSFWEnable && over_18 ? 'blurried' : ''}`} data-src={resVariant} alt=""/>
                  </div>)

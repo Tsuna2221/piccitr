@@ -19,9 +19,9 @@
 
 .close {
   position: absolute;
-  top: 0;
-  right: 35px;
-  font-size: 60px;
+  top: 10px;
+  right: 15px;
+  font-size: 30px;
   z-index: 30; }
 
 .mobile-overlay {
@@ -32,7 +32,9 @@
   .mobile-overlay::-webkit-scrollbar {
     display: none; }
   .mobile-overlay .close {
-    font-size: 40px; }
+    top: 10px;
+    font-size: 25px;
+    background-color: #5d5d5da3; }
   .mobile-overlay .iframe {
     position: absolute;
     bottom: 0; }

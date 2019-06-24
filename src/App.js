@@ -16,7 +16,7 @@ class App extends Component {
 		let { isLoading, posts, NSFWEnable, isRefetching } = this.state
 
         window.onscroll = (ev) => {
-            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 150) {
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 200) {
 				if(!isRefetching){
 					this.setState({isRefetching: true})
 					this.refetch()
@@ -49,7 +49,7 @@ class App extends Component {
     }
 
     state = {
-		isLoading: true
+		isLoading: true,
 	}
 
 	componentDidMount = () => {
@@ -63,7 +63,7 @@ class App extends Component {
 			this.setState({NSFWEnable: true})
 		}
 
-		Axios.get(url).then(({data:{data:{ after, before, children }}}) => this.setState({posts: children, after, before, isLoading: false}))
+		Axios.get(url).then(({data:{data:{ after, children, dist }}}) => this.setState({posts: children, after, count: dist, isLoading: false}))
 	}
 
 	setFilter = () => {
@@ -75,10 +75,17 @@ class App extends Component {
     refetch = () => {
 		let { r, limit } = getQueryString()
 		let subreddit = r ? r.includes('user/') ? `${r}`: `r/${r}` : "r/all"
-		let { after } = this.state
-		let url = `https://www.reddit.com/${subreddit}.json?raw_json=1&limit=${isMobile ? limit ? limit : '50' : limit ? limit : '100'}&count=${isMobile ? limit ? limit : '50' : limit ? limit : '100'}&after=${after}`
+		let { after, count, posts } = this.state
+		let url = `https://www.reddit.com/${subreddit}.json?raw_json=1&limit=${isMobile ? limit ? limit : '50' : limit ? limit : '100'}&count=${count}&after=${after}`
 
-		Axios.get(url).then(({data:{data:{ after, children }}}) => this.setState({posts: [...this.state.posts, ...children], after, isRefetching: false }))
+		Axios.get(url).then(({data:{data:{ after, children, dist }}}) => {
+			let filter = children.filter(({data: { id }}) => {
+				let arr = posts.map(({data: { id }}) => id)
+				return !arr.includes(id)
+			})
+
+			this.setState({posts: [...this.state.posts, ...filter], after, count: this.state.count + dist, isRefetching: false })
+		})
     }
 }
 

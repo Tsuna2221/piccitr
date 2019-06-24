@@ -10,7 +10,7 @@ const Details = ({post, isActive}) => {
     return !isMobile ?
     (
         <div className={`details-overlay c-white d-flex ch-fill pos-fixed bg-details cw-50 z-index-100 pad-24 overflow-y-scroll ${isActive ? 'active' : 'inactive'}`}>
-            <div className="close" onClick={hide}><span className="c-strong clickable">&times;</span></div>
+            <span onClick={hide} className="mdi mdi-close close c-white pad-8 br-circle clickable"></span>
 
             <div className="detail-data mar-v-cen cw-100">
                 <div className='detail-container'>
@@ -33,7 +33,7 @@ const Details = ({post, isActive}) => {
     :
     (
         <div className={`mobile-overlay c-white d-flex ch-fill pos-fixed bg-details cw-50 pad-24 overflow-y-scroll ${isActive ? 'active' : 'inactive'}`}>
-            <div className="close" onClick={hide}><span className="c-strong clickable">&times;</span></div>
+            <span onClick={hide} className="mdi mdi-close close c-white pad-8 br-circle clickable"></span>
 
             <div className="detail-data mar-v-cen cw-100">
                 {embedData(post.post)}

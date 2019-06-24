@@ -34,6 +34,10 @@
             position: absolute;
             bottom: 0;
             opacity: 0;
+
+            .sub{font-size: 100%;}
+            .title{font-size: 85%;}
+            .domain{font-size: 100%;}
         }
     }
 
@@ -47,11 +51,6 @@
     } 
 
     &.mobile{
-        .details{
-            .sub{font-size: 100%;}
-            .title{font-size: 85%;}
-            .domain{font-size: 100%;}
-        }
         .active{
             transform: translateY(0%);
             .details{
@@ -74,11 +73,5 @@
 }
 
 .blurried{
-    filter: blur(40px)
+    filter: blur(40px);
 }
-
-//fonts
-
-.rs-low{font-size: 1vw;}
-
-.rs-medium{font-size: 1.18vw;}

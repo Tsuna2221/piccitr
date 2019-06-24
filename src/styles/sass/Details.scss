@@ -23,9 +23,9 @@
 
 .close{
     position: absolute;
-    top: 0;
-    right: 35px;
-    font-size: 60px;
+    top: 10px;
+    right: 15px;
+    font-size: 30px;
     z-index: 30;
 }
 
@@ -43,7 +43,9 @@
     }
 
     .close{
-        font-size: 40px;
+        top: 10px;
+        font-size: 25px;
+        background-color: #5d5d5da3;
     }
 
     .iframe{

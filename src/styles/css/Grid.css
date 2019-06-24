@@ -23,16 +23,16 @@
       position: absolute;
       bottom: 0;
       opacity: 0; }
+      .grid-item .overlay .details .sub {
+        font-size: 100%; }
+      .grid-item .overlay .details .title {
+        font-size: 85%; }
+      .grid-item .overlay .details .domain {
+        font-size: 100%; }
   .grid-item.desktop:hover > .overlay {
     transform: translateY(0%); }
     .grid-item.desktop:hover > .overlay .details {
       opacity: 1; }
-  .grid-item.mobile .details .sub {
-    font-size: 100%; }
-  .grid-item.mobile .details .title {
-    font-size: 85%; }
-  .grid-item.mobile .details .domain {
-    font-size: 100%; }
   .grid-item.mobile .active {
     transform: translateY(0%); }
     .grid-item.mobile .active .details {
@@ -48,9 +48,3 @@
 
 .blurried {
   filter: blur(40px); }
-
-.rs-low {
-  font-size: 1vw; }
-
-.rs-medium {
-  font-size: 1.18vw; }
