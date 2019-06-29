@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { isMobile } from './Partials/varCheck'
 
 import NSFWButton from './NSFWButton'

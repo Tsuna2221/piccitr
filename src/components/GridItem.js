@@ -8,6 +8,7 @@ class GridItem extends Component {
         let { data, NSFWEnable, width, column, displayDetails, toggleMobileOverlay, GIFEnable } = this.props
         let { preview, title, domain, subreddit_name_prefixed, over_18, name, ups, num_comments } = data
         let resVariant = preview.images[0].resolutions[1] ? preview.images[0].resolutions[1].url : preview.images[0].source.url
+        let gifVariant = GIFEnable && preview.images[0].variants.gif ? preview.images[0].variants.gif.resolutions[1] ? preview.images[0].variants.gif.resolutions[1].url : resVariant : resVariant
         let discount = (number, percentage) => number - (number * percentage / 100)
         let increase = (n, o) => ((o - n) * 100) / o
 
@@ -39,7 +40,7 @@ class GridItem extends Component {
                     data-id={name} 
                     onClick={isMobile ? toggleMobileOverlay : null} 
                     className={`lazyload cw-100 ${!NSFWEnable && over_18 ? 'blurried' : ''}`} 
-                    data-src={resVariant} 
+                    data-src={GIFEnable ? gifVariant : resVariant} 
                     alt=""
                 />
             </div>
@@ -51,7 +52,7 @@ class GridItem extends Component {
     async componentDidMount(){
         let { GIFEnable, data: {preview} } = this.props
         let resVariant = preview.images[0].resolutions[1] ? preview.images[0].resolutions[1].url : preview.images[0].source.url
-        let gifVariant = GIFEnable && preview.images[0].variants.gif ? preview.images[0].variants.gif.source.url : resVariant
+        let gifVariant = GIFEnable && preview.images[0].variants.gif ? preview.images[0].variants.gif.resolutions[1] ? preview.images[0].variants.gif.resolutions[1].url : resVariant : resVariant
 
         const observer = new IntersectionObserver(
             ([{isIntersecting, intersectionRatio, target}]) => {
