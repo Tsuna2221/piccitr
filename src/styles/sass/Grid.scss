@@ -8,6 +8,13 @@
 
 .grid-item{
     overflow: hidden;
+
+    .gif-indicator{
+        right: 5px;
+        top: 5px;
+        color: #fff;
+        background-color: #ff0077a3; 
+    }
     
     .overlay{
         @extend .bg-grid-overlay;

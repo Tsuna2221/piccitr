@@ -6,6 +6,11 @@
 
 .grid-item {
   overflow: hidden; }
+  .grid-item .gif-indicator {
+    right: 5px;
+    top: 5px;
+    color: #fff;
+    background-color: #ff0077a3; }
   .grid-item .overlay {
     transition: 0.2s ease;
     position: absolute;

@@ -6,7 +6,8 @@ const embedData = ({domain, url, media, preview}) => {
 
     switch (domain) {
         case 'gfycat.com':
-            return <video controls autoPlay loop src={preview.reddit_video_preview.fallback_url} style={{width: '100%', height: '100%', maxHeight: isMobile ? (window.innerHeight) + 'px' : '500px'}}></video> 
+            let src = preview.reddit_video_preview ? preview.reddit_video_preview.fallback_url : `https://giant.gfycat.com/${url.split('/').pop()}.mp4`
+            return <video controls autoPlay loop src={src} style={{width: '100%', height: '100%', maxHeight: isMobile ? (window.innerHeight) + 'px' : '500px'}}></video> 
     
         case 'v.redd.it':
             return <video controls autoPlay loop src={url + "/DASH_360?source=fallback"} style={{width: '100%', height: '100%', maxHeight: isMobile ? (window.innerHeight) + 'px' : '500px'}}></video> 
@@ -48,9 +49,6 @@ const embedData = ({domain, url, media, preview}) => {
             }else{
                 return iframe('https://pt.pornhub.com/embed/' + url.split('?')[1].split('=')[1].split('&')[0])
             }
-
-        case 'youporn.com':
-            return iframe('https://www.youporn.com/embed/' + url.split('/')[4])
 
         default:
             if(preview){

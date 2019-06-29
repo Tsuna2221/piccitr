@@ -37,7 +37,7 @@ class SearchButton extends Component {
         sub: ''
     }
     
-    hideNSFWButton = () => document.querySelector('.NSFWButton').classList.toggle('hide')
+    hideNSFWButton = () => document.querySelector('.SettingsModal').classList.toggle('hide')
 
     toggleInput = () => this.setState({inputEnabled: !this.state.inputEnabled})
 

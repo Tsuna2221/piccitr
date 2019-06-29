@@ -7,13 +7,13 @@ import { isMobile } from './components/Partials/varCheck'
 //Components
 import Grid from './components/Grid'
 import LoaderOverlay from './components/LoaderOverlay'
-import NSFWButton from './components/NSFWButton'
 import SearchButton from './components/SearchButton'
 import { getQueryString } from './components/Partials/queryPartials'
+import SettingsModal from './components/SettingsModal'
 
 class App extends Component {
     render() {
-		let { isLoading, posts, NSFWEnable, isRefetching } = this.state
+		let { isLoading, posts, NSFWEnable, GIFEnable, isRefetching } = this.state
 
         window.onscroll = (ev) => {
             if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 200) {
@@ -21,7 +21,7 @@ class App extends Component {
 					this.setState({isRefetching: true})
 					this.refetch()
 				}
-            }
+			}
 		};
 		
         return (
@@ -32,8 +32,8 @@ class App extends Component {
 					:
 					(<Fragment>
 						<SearchButton NSFWEnable={NSFWEnable}/>
-						<NSFWButton NSFWEnable={NSFWEnable} setFilter={this.setFilter}/>
-						<Grid NSFWEnable={NSFWEnable} posts={posts}></Grid>
+						<SettingsModal nsfw={{NSFWEnable, setFilter: this.setFilter}} gif={{GIFEnable, setGif: this.setGif}} />
+						<Grid GIFEnable={GIFEnable} NSFWEnable={NSFWEnable} posts={posts}></Grid>
 						{
 							isRefetching ?
 							<div className="d-flex a-horizontal mar-v-14">
@@ -50,6 +50,7 @@ class App extends Component {
 
     state = {
 		isLoading: true,
+
 	}
 
 	componentDidMount = () => {
@@ -63,14 +64,27 @@ class App extends Component {
 			this.setState({NSFWEnable: true})
 		}
 
+		if(localStorage.getItem('GIFEnable') === 'false' || !localStorage.getItem('GIFEnable')){
+            this.setState({GIFEnable: false})
+        }else{
+			this.setState({GIFEnable: true})
+		}
+
 		Axios.get(url).then(({data:{data:{ after, children, dist }}}) => this.setState({posts: children, after, count: dist, isLoading: false}))
 	}
 
 	setFilter = () => {
         let { NSFWEnable } = this.state
         this.setState({NSFWEnable: !NSFWEnable})
-        localStorage.setItem('NSFWEnable', !NSFWEnable)
-    }
+        localStorage.setItem('GIFEnable', !NSFWEnable)
+	}
+	
+	setGif = () => {
+        let { GIFEnable } = this.state
+        this.setState({GIFEnable: !GIFEnable})
+		localStorage.setItem('GIFEnable', !GIFEnable)
+		window.location.reload()
+	}
 	
     refetch = () => {
 		let { r, limit } = getQueryString()

@@ -1,21 +1,35 @@
-.NSFWButton {
+.SettingsModal {
+  transition: 0.4s ease;
   position: fixed;
   bottom: 15px;
   right: 15px;
+  flex-direction: column;
+  align-items: flex-end; }
+  .SettingsModal .modal {
+    transition: 0.12s ease;
+    border-radius: 8px;
+    background-color: #323241ed;
+    overflow: hidden;
+    width: 180px; }
+    .SettingsModal .modal.inactive {
+      pointer-events: none;
+      opacity: 0; }
+  .SettingsModal.hide {
+    opacity: 0;
+    pointer-events: none; }
+
+.toggler {
   transition: 0.4s ease;
   width: 50px;
   height: 24px;
   background-color: #c4c4c4;
   padding: 3px;
   z-index: 300; }
-  .NSFWButton.hide {
-    opacity: 0;
-    pointer-events: none; }
-  .NSFWButton.inactive {
+  .toggler.inactive {
     background-color: #ff0055; }
-    .NSFWButton.inactive .handler {
+    .toggler.inactive .handler {
       transform: translateX(100%); }
-  .NSFWButton .handler {
+  .toggler .handler {
     transition: 0.4s ease;
     background-color: #fff;
     width: 50%;
@@ -25,8 +39,6 @@
 
 .search-container {
   bottom: 15px; }
-  .search-container .SearchButton {
-    background-color: #ff0055; }
   .search-container form input {
     transition: 0.3s ease;
     width: 230px;
@@ -38,6 +50,9 @@
     .search-container form input.inactive {
       width: 0px;
       padding: 0; }
+
+.SearchButton {
+  background-color: #ff0055; }
 
 .DetailsButton {
   z-index: 1;
