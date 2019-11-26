@@ -1,5 +1,31 @@
+# Piccit React
 A masonry grid for subreddit images/videos/gifs
 
-## Live Version
+[Access it here](https://tsuna2221.github.io/piccitr)
 
-[Access it here](https://piccitr.netlify.com/)
+## Features
+* Support for every subreddit with content media.  
+* Support all sort options.  
+* Safe browsing mode / Blur NSFW labeled items.    
+* Embedding from popular sources like: 
+- YouTube 
+- Twitch Clips
+- Streamable
+- PornHub
+- Gfycat
+- Imgur
+- More to be added (?)
+
+### Possible future features
+* r/random and r/randnsfw support.  
+* Mobile optimizations.  
+* Spoilers filter.  
+* More Embedding support.  
+* Imgur albums preview.
+* Users page media fetch
+* Post comments
+
+## Using
+* [React Masonry](https://github.com/eiriklv/react-masonry-component)
+* [Random Color](https://github.com/davidmerfield/randomColor)
+* [query-string](https://github.com/sindresorhus/query-string)

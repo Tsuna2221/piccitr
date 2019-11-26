@@ -13,16 +13,16 @@ import SettingsModal from './components/SettingsModal'
 
 class App extends Component {
     render() {
-		let { isLoading, posts, NSFWEnable, GIFEnable, isRefetching } = this.state
+		let { isLoading, posts, NSFWEnable, GIFEnable, isRefetching, mobileEnable, mediaEnable } = this.state
 
-        window.onscroll = (ev) => {
+		window.onscroll = (ev) => {
             if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 200) {
 				if(!isRefetching){
 					this.setState({isRefetching: true})
 					this.refetch()
 				}
 			}
-		};
+		};	
 		
         return (
             <div className='App'>
@@ -32,8 +32,8 @@ class App extends Component {
 					:
 					(<Fragment>
 						<SearchButton NSFWEnable={NSFWEnable}/>
-						<SettingsModal nsfw={{NSFWEnable, setFilter: this.setFilter}} gif={{GIFEnable, setGif: this.setGif}} />
-						<Grid GIFEnable={GIFEnable} NSFWEnable={NSFWEnable} posts={posts}></Grid>
+						<SettingsModal media={{mediaEnable, setMedia: this.setMedia}} mobile={{mobileEnable, setMobile: this.setMobile}} nsfw={{NSFWEnable, setFilter: this.setFilter}} gif={{GIFEnable, setGif: this.setGif}} />
+						<Grid mediaEnable={mediaEnable} GIFEnable={GIFEnable} NSFWEnable={NSFWEnable} posts={posts}></Grid>
 						{
 							isRefetching ?
 							<div className="d-flex a-horizontal mar-v-14">
@@ -49,11 +49,11 @@ class App extends Component {
     }
 
     state = {
-		isLoading: true,
-
+		isLoading: true
 	}
 
 	componentDidMount = () => {
+		let { isRefetching } = this.state
 		let { r, limit } = getQueryString()
 		let subreddit = r ? r.includes('user/') ? `${r}`: `r/${r}` : "r/all"
 		let url = `https://www.reddit.com/${subreddit}.json?raw_json=1&limit=${isMobile ? limit ? limit : '50' : limit ? limit : '100'}`
@@ -70,19 +70,57 @@ class App extends Component {
 			this.setState({GIFEnable: true})
 		}
 
-		Axios.get(url).then(({data:{data:{ after, children, dist }}}) => this.setState({posts: children, after, count: dist, isLoading: false}))
+		if(localStorage.getItem('MobileEnable') === 'false' || !localStorage.getItem('GIFEnable')){
+            this.setState({mobileEnable: false})
+        }else{
+			this.setState({mobileEnable: true})
+		}
+
+		if(localStorage.getItem('MediaEnable') === 'false' || !localStorage.getItem('MediaEnable')){
+            this.setState({mediaEnable: false})
+        }else{
+			this.setState({mediaEnable: true})
+		}
+
+		Axios.get(url)
+			.then(({data:{data:{ after, children, dist }}}) => this.setState({
+				posts: children.filter((data) => data.data.preview), 
+				after, count: dist,
+				isLoading: false
+			}))
+			.then(() => {
+				if(document.body.clientHeight < window.innerHeight){
+					if(!isRefetching){
+						this.setState({isRefetching: true})
+						this.refetch()
+					}
+				}	
+			})
 	}
 
 	setFilter = () => {
         let { NSFWEnable } = this.state
         this.setState({NSFWEnable: !NSFWEnable})
-        localStorage.setItem('GIFEnable', !NSFWEnable)
+        localStorage.setItem('NSFWEnable', !NSFWEnable)
 	}
 	
+	setMedia = () => {
+        let { mediaEnable } = this.state
+        this.setState({mediaEnable: !mediaEnable})
+        localStorage.setItem('MediaEnable', !mediaEnable)
+	}
+
 	setGif = () => {
         let { GIFEnable } = this.state
         this.setState({GIFEnable: !GIFEnable})
 		localStorage.setItem('GIFEnable', !GIFEnable)
+		window.location.reload()
+	}
+
+	setMobile = () => {
+        let { mobileEnable } = this.state
+        this.setState({mobileEnable: !mobileEnable})
+		localStorage.setItem('MobileEnable', !mobileEnable)
 		window.location.reload()
 	}
 	
@@ -93,12 +131,18 @@ class App extends Component {
 		let url = `https://www.reddit.com/${subreddit}.json?raw_json=1&limit=${isMobile ? limit ? limit : '50' : limit ? limit : '100'}&count=${count}&after=${after}`
 
 		Axios.get(url).then(({data:{data:{ after, children, dist }}}) => {
-			let filter = children.filter(({data: { id }}) => {
+			let filter = children.filter(({data: { preview, id }}) => {
 				let arr = posts.map(({data: { id }}) => id)
-				return !arr.includes(id)
-			})
 
+				return !arr.includes(id) && preview
+			})
+			console.log(url)
 			this.setState({posts: [...this.state.posts, ...filter], after, count: this.state.count + dist, isRefetching: false })
+		}).then(() => {
+			if(document.body.clientHeight < window.innerHeight){
+				this.setState({isRefetching: true})
+				this.refetch()
+			}	
 		})
     }
 }

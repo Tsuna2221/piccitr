@@ -5,7 +5,7 @@ class GridItem extends Component {
     ref = React.createRef()
 
     render() {
-        let { data, NSFWEnable, width, column, displayDetails, toggleMobileOverlay, GIFEnable } = this.props
+        let { data, NSFWEnable, width, column, displayDetails, toggleMobileOverlay, GIFEnable, index } = this.props
         let { preview, title, domain, subreddit_name_prefixed, over_18, name, ups, num_comments } = data
         let resVariant = preview.images[0].resolutions[1] ? preview.images[0].resolutions[1].url : preview.images[0].source.url
         let gifVariant = GIFEnable && preview.images[0].variants.gif ? preview.images[0].variants.gif.resolutions[1] ? preview.images[0].variants.gif.resolutions[1].url : resVariant : resVariant
@@ -18,7 +18,7 @@ class GridItem extends Component {
                 style={{width: column + "%", height: discount(preview.images[0].source.height, increase(width, preview.images[0].source.width))}} 
                 key={name}
                 className={`grid-item mar-2 bg-loading clickable overflow-y-hide ${isMobile ? 'mobile' : 'desktop'}`}
-                onClick={isMobile ? null : () => displayDetails(data)}>
+                onClick={isMobile ? null : () => displayDetails({...data, index})}>
                 <div onClick={isMobile ? toggleMobileOverlay : null} data-overlayid={name} className="overlay cw-100 ch-100">
                     <div className="details-stats d-flex c-white no-events pos-absolute">
                         <span className="stat-icon mdi mdi-arrow-up-bold mar-r-10"><span className="mar-l-4">{ups}</span></span>
