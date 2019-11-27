@@ -55,7 +55,7 @@ class App extends Component {
 	componentDidMount = () => {
 		let { isRefetching } = this.state
 		let { r, limit } = getQueryString()
-		let subreddit = r ? r.includes('user/') ? `${r}`: `r/${r}` : "r/all"
+		let subreddit = r ? r.includes('user/') ? `${r}`: `r/${r}` : "r/popular"
 		let url = `https://www.reddit.com/${subreddit}.json?raw_json=1&limit=${isMobile ? limit ? limit : '50' : limit ? limit : '100'}`
 
 		if(localStorage.getItem('NSFWEnable') === 'false' || !localStorage.getItem('NSFWEnable')){
@@ -126,7 +126,7 @@ class App extends Component {
 	
     refetch = () => {
 		let { r, limit } = getQueryString()
-		let subreddit = r ? r.includes('user/') ? `${r}`: `r/${r}` : "r/all"
+		let subreddit = r ? r.includes('user/') ? `${r}`: `r/${r}` : "r/popular"
 		let { after, count, posts } = this.state
 		let url = `https://www.reddit.com/${subreddit}.json?raw_json=1&limit=${isMobile ? limit ? limit : '50' : limit ? limit : '100'}&count=${count}&after=${after}`
 
