@@ -1,19 +1,19 @@
 .SettingsModal {
   transition: 0.4s ease;
   position: fixed;
-  bottom: 15px;
+  bottom: 70px;
   right: 15px;
   flex-direction: column;
   align-items: flex-end; }
+  .SettingsModal.inactive {
+    pointer-events: none;
+    opacity: 0; }
   .SettingsModal .modal {
     transition: 0.12s ease;
     border-radius: 8px;
     background-color: #323241ed;
     overflow: hidden;
     width: 180px; }
-    .SettingsModal .modal.inactive {
-      pointer-events: none;
-      opacity: 0; }
   .SettingsModal.hide {
     opacity: 0;
     pointer-events: none; }
@@ -51,6 +51,11 @@
       width: 0px;
       padding: 0; }
 
+.sett-btn {
+  position: absolute;
+  right: 25px;
+  bottom: 15px; }
+
 .SearchButton {
   background-color: #ff0055; }
 
@@ -59,3 +64,18 @@
   bottom: 8px;
   left: 10px;
   background-color: #5d5d5da3; }
+
+.expand-btn {
+  justify-content: flex-end;
+  transition: 0.3s ease;
+  top: 0;
+  left: 0;
+  height: 23px; }
+  .expand-btn:hover {
+    background-color: #1e1e27; }
+
+.fullscreen-btn {
+  height: fit-content;
+  top: 12px;
+  right: 12px;
+  background-color: #424242a3; }

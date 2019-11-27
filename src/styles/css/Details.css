@@ -3,9 +3,13 @@
 
 .details-overlay, .mobile-overlay {
   transition: 0.3s ease;
-  transform: translateX(-100%); }
+  transform: translateX(-100%);
+  padding: 34px 24px;
+  width: 50%; }
   .details-overlay.active, .active.mobile-overlay {
     transform: translateX(0%); }
+  .details-overlay.expand-active, .expand-active.mobile-overlay {
+    width: 96%; }
 
 .button {
   font-family: 'Montserrat';
@@ -19,7 +23,7 @@
 
 .close {
   position: absolute;
-  top: 10px;
+  top: 20px;
   right: 15px;
   font-size: 30px;
   z-index: 30; }
@@ -38,3 +42,18 @@
   .mobile-overlay .iframe {
     position: absolute;
     bottom: 0; }
+
+.ImageDisplay {
+  transition: 0.1s ease;
+  top: 0;
+  left: 0;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .ImageDisplay .full-display {
+    max-height: 100%;
+    max-width: 100%; }
+  .ImageDisplay.inactive {
+    pointer-events: none;
+    opacity: 0; }

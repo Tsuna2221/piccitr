@@ -22,6 +22,10 @@ body{
     z-index: 100;
 }
 
+.z-index-150{
+    z-index: 150;
+}
+
 .bg-overlay{
     @extend .z-index-50;
     transition: 0.5s ease;

@@ -5,8 +5,15 @@
 .details-overlay{
     transition: 0.3s ease;
     transform: translateX(-100%);
+    padding: 34px 24px;
+    width: 50%;
+
     &.active{
         transform: translateX(0%);
+    }
+
+    &.expand-active{
+        width: 96%;
     }
 }
 
@@ -23,7 +30,7 @@
 
 .close{
     position: absolute;
-    top: 10px;
+    top: 20px;
     right: 15px;
     font-size: 30px;
     z-index: 30;
@@ -51,5 +58,25 @@
     .iframe{
         position: absolute;
         bottom: 0;
+    }
+}
+
+.ImageDisplay{
+    transition: 0.1s ease;
+    top: 0;
+    left: 0;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .full-display{
+        max-height: 100%;
+        max-width: 100%;
+    }
+
+    &.inactive{
+        pointer-events: none;
+        opacity: 0;
     }
 }

@@ -15,7 +15,7 @@ class SearchButton extends Component {
         let { inputEnabled } = this.state
 
         return (
-            <div className="search-container d-flex pos-fixed z-index-100 cw-fill pad-h-16">
+            <div className="search-container d-flex pos-fixed z-index-100 pad-h-16">
                 <form onSubmit={this.redirectTo}>
                     <input onChange={this.handleInput} placeholder='Search sub or user by using "user/<name>"' data-target="search" className={`search-input mar-r-10 pad-h-24 s-12 br-circle no-outline ${inputEnabled ? '' : 'inactive'}`} type="text" spellCheck="false"/>
                 </form>

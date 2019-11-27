@@ -17,7 +17,7 @@ class Grid extends Component {
         return (
             <Fragment>
                 <div onClick={selectedPost.hide} className={`bg-overlay ${isActive ? 'active' : 'inactive'}`}></div>
-                <Details length={length} moveItem={this.moveItem} post={selectedPost} isActive={isActive}></Details>
+                <Details setFullscreen={this.setFullscreen} length={length} moveItem={this.moveItem} post={selectedPost} isActive={isActive}></Details>
                 <div className='mar-h-cen' style={{width: '80vw'}}>
                     <Masonry id='posts-container'
                         elementType={'div'}
@@ -39,6 +39,10 @@ class Grid extends Component {
         isActive: false,
         width: (window.innerWidth * 80 / 100) * ((100 / Math.floor(((window.innerWidth * 80 / 100)) / 200)) - 1) / 100,
         column: ((100 / Math.floor(((window.innerWidth * 80 / 100)) / 200)) - 1),
+    }
+
+    setFullscreen = (el) => {
+
     }
 
     drawPosts = () => {
