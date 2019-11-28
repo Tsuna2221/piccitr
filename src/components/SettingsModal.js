@@ -32,7 +32,7 @@ class SettingsModal extends Component {
                     </div>
                 </div>
                 <div>
-                    <span onClick={() => this.setState({toggleSetting: !toggleSetting})} className={`SearchButton pos-fixed sett-btn mdi mdi-${toggleSetting ? "close" : "settings"} br-circle c-white cw-fit clickable sd-medium mar-t-14 ${isMobile ? 's-26 pad-14' : 's-22 pad-10'}`}></span>
+                    <span onClick={() => this.setState({toggleSetting: !toggleSetting})} className={`SearchButton z-index-150 pos-fixed sett-btn mdi mdi-${toggleSetting ? "close" : "settings"} br-circle c-white cw-fit clickable sd-medium mar-t-14 ${isMobile ? 's-26 pad-14' : 's-22 pad-10'}`}></span>
                 </div>
             </Fragment>
         );
