@@ -11,7 +11,6 @@ A masonry grid for subreddit images/videos/gifs
 - YouTube 
 - Twitch Clips
 - Streamable
-- PornHub
 - Gfycat
 - Imgur
 - More to be added (?)
