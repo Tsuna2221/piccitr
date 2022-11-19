@@ -10,7 +10,7 @@
     "react-in-viewport": "0.0.38",
     "react-masonry-component": "^6.2.1",
     "react-on-screen": "^2.1.1",
-    "react-scripts": "3.0.1"
+    "react-scripts": "5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
